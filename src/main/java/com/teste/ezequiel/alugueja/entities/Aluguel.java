@@ -13,11 +13,11 @@ public class Aluguel implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", unique = true)
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "filme_id", unique = true)
+    @JoinColumn(name = "filme_id")
     private Filme filme;
 
     @Column(name = "data_limite")

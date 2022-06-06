@@ -44,19 +44,16 @@ public class AluguelServiceImpl implements AluguelService {
         if (aluguel == null){
             aluguel = new Aluguel(usuario, filme, getDate(input.getQuantidadeHoras()));
             usuario.payFilme(filme.getValor().multiply(new BigDecimal(input.getQuantidadeHoras())));
+            aluguelRepository.save(aluguel);
+            filme.getAlugueis().add(aluguel);
+            usuario.getAlugueis().add(aluguel);
+            usuarioRepository.save(usuario);
+            filmeRepository.save(filme);
         } else {
             usuario.payFilme(filme.getValor().multiply(new BigDecimal(input.getQuantidadeHoras())));
             aluguel.setDataLimite(addTime(aluguel, input.getQuantidadeHoras()));
+            aluguelRepository.save(aluguel);
         }
-
-
-        aluguelRepository.save(aluguel);
-
-        filme.getAlugueis().add(aluguel);
-        usuario.getAlugueis().add(aluguel);
-
-        usuarioRepository.save(usuario);
-        filmeRepository.save(filme);
 
         return usuarioMapper.toUsuarioOutPut(usuario);
     }
