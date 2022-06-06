@@ -1,9 +1,9 @@
 # Alugue já application backend
 
 ## Projeto feito
-1- Java 11, com 
-2- Springboot
-3- PostgreSql
+- Java 11 
+- Springboot
+- PostgreSql
 
 ## Requerido
 - Java 11
